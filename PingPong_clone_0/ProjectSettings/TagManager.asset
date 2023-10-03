@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Red
+  - Green
+  - Blue
+  - Player2
+  - LeftWall
+  - RightWall
+  - UpWall
+  - DownWall
   layers:
   - Default
   - TransparentFX

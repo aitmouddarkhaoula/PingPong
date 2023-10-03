@@ -20,7 +20,7 @@ public class PaddleController : NetworkBehaviour {
         if (!IsOwner) Destroy(this);
         // get the different clients to spawn the paddle in different positions 5 and -5 on the z axis
         if (NetworkManager.Singleton.ConnectedClients.TryGetValue(OwnerClientId, out var networkClient)) {
-            transform.position = new Vector3(0, 0, networkClient.ClientId == 0 ? -5 : 5);
+            transform.position = new Vector3(0, networkClient.ClientId == 0 ? -5 : 5, 0);
         }
     }
 
@@ -37,9 +37,9 @@ public class PaddleController : NetworkBehaviour {
 
         Ray ray = cam.ScreenPointToRay(inputPosition);
         Vector3 newPosition;
-        if (transform.position.x <= -levelWidth && ray.direction.x < 0.0f) newPosition = new Vector3(-levelWidth, 0.0f, transform.position.z);
-        else if (transform.position.x >= levelWidth && ray.direction.x > 0.0f) newPosition = new Vector3(levelWidth, 0.0f, transform.position.z);
-        else newPosition = new Vector3(ray.GetPoint(moveSpeed).x, 0.0f, transform.position.z);
+        if (transform.position.x <= -levelWidth && ray.direction.x < 0.0f) newPosition = new Vector3(-levelWidth, transform.position.y, 0);
+        else if (transform.position.x >= levelWidth && ray.direction.x > 0.0f) newPosition = new Vector3(levelWidth, transform.position.y, 0);
+        else newPosition = new Vector3(ray.GetPoint(moveSpeed).x, transform.position.y, 0);
 
         transform.position = newPosition;
     }
