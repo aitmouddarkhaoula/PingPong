@@ -18,10 +18,18 @@ public class PaddleController : NetworkBehaviour {
 
     public override void OnNetworkSpawn() {
         if (!IsOwner) Destroy(this);
-        // get the different clients to spawn the paddle in different positions 5 and -5 on the z axis
-        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(OwnerClientId, out var networkClient)) {
-            transform.position = new Vector3(0, 0, networkClient.ClientId == 0 ? -5 : 5);
+        // Rotate stuff so that the player is always at the bottom of the screen, and the other player is at the top
+        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(NetworkManager.Singleton.LocalClientId, out var networkClient)) {
+            cam.transform.rotation = 
+                Quaternion.Euler(0, 0, networkClient.PlayerObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId ? 
+                        0 : 
+                        180);
         }
+
+
+
+
+
     }
 
     private void Update() {
