@@ -42,5 +42,7 @@ public class PaddleController : NetworkBehaviour {
         else newPosition = new Vector3(ray.GetPoint(moveSpeed).x, transform.position.y, 0);
 
         transform.position = newPosition;
+        if(transform.position.x>3.7f) transform.position = new Vector3(3.7f, transform.position.y, 0);
+        if(transform.position.x<-3.7f) transform.position = new Vector3(-3.7f, transform.position.y, 0);
     }
 }
