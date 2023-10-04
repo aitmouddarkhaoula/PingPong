@@ -10,6 +10,8 @@ TagManager:
   - Player2
   - LeftWall
   - RightWall
+  - UpWall
+  - DownWall
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Post Processing
   - 
   - 
   - 

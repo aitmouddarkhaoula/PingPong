@@ -25,11 +25,6 @@ public class PaddleController : NetworkBehaviour {
                         0 : 
                         180);
         }
-
-
-
-
-
     }
 
     private void Update() {
@@ -45,10 +40,12 @@ public class PaddleController : NetworkBehaviour {
 
         Ray ray = cam.ScreenPointToRay(inputPosition);
         Vector3 newPosition;
-        if (transform.position.x <= -levelWidth && ray.direction.x < 0.0f) newPosition = new Vector3(-levelWidth, 0.0f, transform.position.z);
-        else if (transform.position.x >= levelWidth && ray.direction.x > 0.0f) newPosition = new Vector3(levelWidth, 0.0f, transform.position.z);
-        else newPosition = new Vector3(ray.GetPoint(moveSpeed).x, 0.0f, transform.position.z);
+        if (transform.position.x <= -levelWidth && ray.direction.x < 0.0f) newPosition = new Vector3(-levelWidth, transform.position.y, 0);
+        else if (transform.position.x >= levelWidth && ray.direction.x > 0.0f) newPosition = new Vector3(levelWidth, transform.position.y, 0);
+        else newPosition = new Vector3(ray.GetPoint(moveSpeed).x, transform.position.y, 0);
 
         transform.position = newPosition;
+        if(transform.position.x>3.7f) transform.position = new Vector3(3.7f, transform.position.y, 0);
+        if(transform.position.x<-3.7f) transform.position = new Vector3(-3.7f, transform.position.y, 0);
     }
 }
