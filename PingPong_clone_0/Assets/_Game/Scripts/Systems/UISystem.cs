@@ -21,14 +21,9 @@ namespace GameSystems {
 
         public void Awake() {
             GameStateSystem.OnGameStateChanged += UpdateUI;
-            //_startButton.onClick.AddListener(OnStartButtonClicked);
             UpdateUI();
         }
 
-        // public object OnStartButtonClicked
-        // {
-        //     
-        // }
 
         public void UpdateUI() {
             var currentState = GameStateSystem.GetState();

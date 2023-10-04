@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameSystems;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -17,14 +18,16 @@ public class PaddleController : NetworkBehaviour {
     }
 
     public override void OnNetworkSpawn() {
-        if (!IsOwner) Destroy(this);
+        if (!IsOwner) enabled = false;
         // get the different clients to spawn the paddle in different positions 5 and -5 on the z axis
         if (NetworkManager.Singleton.ConnectedClients.TryGetValue(OwnerClientId, out var networkClient)) {
             transform.position = new Vector3(0, networkClient.ClientId == 0 ? -5 : 5, 0);
         }
     }
+ 
 
     private void Update() {
+        if(GameStateSystem._currentState != GameState.Playing) return;
         Vector3 inputPosition;
         if (ActivateMouse) {
             if (Input.GetMouseButton(0)) inputPosition = Input.mousePosition;
@@ -44,5 +47,10 @@ public class PaddleController : NetworkBehaviour {
         transform.position = newPosition;
         if(transform.position.x>3.7f) transform.position = new Vector3(3.7f, transform.position.y, 0);
         if(transform.position.x<-3.7f) transform.position = new Vector3(-3.7f, transform.position.y, 0);
+    }
+
+    public void Reset()
+    {
+        
     }
 }

@@ -6,13 +6,13 @@ using UnityEngine.Serialization;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Player player;
-    public Player ball;
+    //public PaddleController player;
+    public Ball ball;
     // Start is called before the first frame update
     public void Init()
     {
-       // ball.Init();
-    }
+        ball.Init();
+    } 
 
     // Update is called once per frame
     void Update()
@@ -23,6 +23,8 @@ public class GameManager : Singleton<GameManager>
 
     public void Reset()
     {
-        // player.Reset();
+        ball.Reset();
+        //player.Reset();
+
     }
 }

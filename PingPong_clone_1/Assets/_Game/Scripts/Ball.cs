@@ -12,12 +12,17 @@ public class Ball : MonoBehaviour
     [SerializeField] private Score score0;
     [SerializeField] private Score score1;
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector3.down*10, ForceMode2D.Impulse);
         
        // playersList.AddRange(GameObject.FindObjectsOfType<PaddleController>()); 
+    }
+
+    public void Init()
+    {
+        rb.AddForce(Vector3.down*10, ForceMode2D.Impulse);
+
     }
 
     // Update is called once per frame
@@ -40,11 +45,16 @@ public class Ball : MonoBehaviour
         }
         if(other.gameObject.CompareTag("UpWall"))
         {
-            score1.AddScore(1);
+            score0.AddScore(1);
         }
         if(other.gameObject.CompareTag("DownWall"))
         {
-            score0.AddScore(1);
+            score1.AddScore(1);
         }
+    }
+
+    public void Reset()
+    {
+        
     }
 }

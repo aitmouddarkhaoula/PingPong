@@ -11,7 +11,7 @@ namespace GameSystems {
     public static class GameStateSystem {
         public static event Action OnGameStateChanged;
 
-        private static GameState _currentState = GameState.StartingMenu;
+        public static GameState _currentState = GameState.StartingMenu;
 
 
         public static GameState GetState() => _currentState;
