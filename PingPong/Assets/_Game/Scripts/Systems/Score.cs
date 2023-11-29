@@ -1,10 +1,11 @@
 using DG.Tweening;
 using System;
 using TMPro;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-    public class Score : MonoBehaviour
+    public class Score : NetworkBehaviour
     {
         public int score=0;
         public int highScore;

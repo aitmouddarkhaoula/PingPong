@@ -467,6 +467,14 @@ PrefabInstance:
       propertyPath: score1
       value: 
       objectReference: {fileID: 335791444189743183}
+    - target: {fileID: 3204256107302420138, guid: c5289bccebc30ef43a987be17a87c68f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c2a98717c17c80c42ab5d43a61900647, type: 2}
+    - target: {fileID: 3204256107302420138, guid: c5289bccebc30ef43a987be17a87c68f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3204256107302420142, guid: c5289bccebc30ef43a987be17a87c68f, type: 3}
       propertyPath: m_RootOrder
       value: 6
