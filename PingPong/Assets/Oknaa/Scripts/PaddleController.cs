@@ -20,12 +20,17 @@ public class PaddleController : NetworkBehaviour {
     public override void OnNetworkSpawn() {
         if (!IsOwner) enabled = false;
         // Rotate stuff so that the player is always at the bottom of the screen, and the other player is at the top
-        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(NetworkManager.Singleton.LocalClientId, out var networkClient)) {
-            cam.transform.rotation = 
-                Quaternion.Euler(0, 0, networkClient.PlayerObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId ? 
-                        0 : 
-                        180);
-        }
+        // if (NetworkManager.Singleton.ConnectedClients.TryGetValue(NetworkManager.Singleton.LocalClientId, out var networkClient)) {
+        //     cam.transform.rotation = 
+        //         Quaternion.Euler(0, 0, networkClient.PlayerObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId ? 
+        //             0 : 
+        //             180);
+        // }
+        
+        bool isPlayer1 = NetworkManager.Singleton.ConnectedClients.Count == 1;
+        transform.position = new Vector3(0, isPlayer1 ? -6f : 6f, 0);
+        cam.transform.rotation = Quaternion.Euler(0, 0, isPlayer1 ? 0 : 180);
+        
     }
  
 
