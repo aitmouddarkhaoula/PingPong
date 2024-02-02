@@ -12,14 +12,15 @@ public class NetworkButtons : MonoBehaviour {
             if (GUILayout.Button("Server")) NetworkManager.Singleton.StartServer();
             if (GUILayout.Button("Client")) NetworkManager.Singleton.StartClient();
         }
-
+        
+        GameManager.Instance.serverManager.SetCamera();
         GUILayout.EndArea();
     }
 
-    // private void Awake() {
-    //     GetComponent<UnityTransport>().SetDebugSimulatorParameters(
-    //         packetDelay: 120,
-    //         packetJitter: 5,
-    //         dropRate: 3);
-    // }
+    private void Awake() {
+        GetComponent<UnityTransport>().SetDebugSimulatorParameters(
+            packetDelay: 120,
+            packetJitter: 5,
+            dropRate: 3);
+    }
 }

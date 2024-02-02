@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7692180488939963159}
   - component: {fileID: 7692180488939963156}
   - component: {fileID: 7955861544687873694}
+  - component: {fileID: 2364364135094706814}
   m_Layer: 5
   m_Name: Player1Score
   m_TagString: Untagged
@@ -151,3 +152,23 @@ MonoBehaviour:
   score: 0
   highScore: 0
   scoreText: {fileID: 7692180488939963156}
+--- !u!114 &2364364135094706814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692180488939963154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

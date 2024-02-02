@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace GameSystems {
-    public class UISystem : Singleton<UISystem> {
-        
+    public class UISystem : Singleton<UISystem>
+    {
+
+        public Score score;
         [SerializeField] private GameObject _inGamePanel;
         [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private GameObject _startMenuPanel;
         [SerializeField] private GameObject _winPanel;
-        
+
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _RestartButton;
 
@@ -23,7 +25,6 @@ namespace GameSystems {
             GameStateSystem.OnGameStateChanged += UpdateUI;
             UpdateUI();
         }
-
 
         public void UpdateUI() {
             var currentState = GameStateSystem.GetState();
